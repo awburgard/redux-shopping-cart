@@ -10,20 +10,13 @@ class ProductForm extends Component {
         productToAdd: { name: '', price: 0 }
     }
 
-    handlePriceChange = (event) => {
+    handleChange = (event) => {
+       let inputValue = event.target.value;
+       const propertyKey = event.target.dataset.name
         this.setState({
             productToAdd: {
                 ...this.state.productToAdd,
-                price: event.target.value
-            },
-        });
-    }
-
-    handleNameChange = (event) => {
-        this.setState({
-            productToAdd: {
-                ...this.state.productToAdd,
-                name: event.target.value
+                [propertyKey] : inputValue,
             },
         });
     }
@@ -40,8 +33,8 @@ class ProductForm extends Component {
 render() {
     return (
         <form onSubmit={this.addProduct}>
-            <input onChange={this.handleNameChange} type="text" placeholder="name" />
-            <input onChange={this.handlePriceChange} type="text" placeholder="price" />
+            <input data-name="name" onChange={this.handleChange} type="text" placeholder="name" />
+            <input data-name="price" onChange={this.handleChange} type="text" placeholder="price" />
             <input type="submit" value="Submit" />
         </form>
     )
