@@ -30,6 +30,11 @@ const checkoutReducer = (state = [], action) => {
         return [...state, action.payload]
     } else if (action.type === 'CLEAR_CART'){
         return [];
+    } else if (action.type === 'REMOVE'){
+        const newState = state.filter((element, index)=>{
+            return index !== parseInt(action.payload);
+        });
+        return newState
     }
     return state;
 };
