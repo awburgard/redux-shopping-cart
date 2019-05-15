@@ -20,7 +20,7 @@ class ProductListItem extends Component {
             Title: 'Are you sure?',
             text: 'This will delete your item',
             icon: 'warning',
-            buttons: true,
+            buttons: ["Oh noez!", "Aww yiss!"],
             dangerMode: true,
         })
         .then((willDelete)=>{

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
 import { connect } from 'react-redux'
+import 'bulma/css/bulma.css'
 
 class ProductForm extends Component {
     // You will need to keep this state in this component
@@ -34,9 +35,9 @@ class ProductForm extends Component {
 render() {
     return (
         <form onSubmit={this.addProduct}>
-            <input data-name="name" onChange={this.handleChange} type="text" placeholder="name" />
-            <input data-name="price" onChange={this.handleChange} type="text" placeholder="price" />
-            <input type="submit" value="Submit" />
+            <input className="input is-primary is-rounded" data-name="name" onChange={this.handleChange} type="text" placeholder="name" />
+            <input className="input is-primary is-rounded" data-name="price" onChange={this.handleChange} type="text" placeholder="price" />
+            <input className="button is-primary is-rounded" type="submit" value="Submit" />
         </form>
     )
 }
