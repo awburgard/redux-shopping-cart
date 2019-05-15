@@ -9,6 +9,7 @@ class Checkout extends Component {
         this.props.dispatch({
             type: 'CLEAR_CART'
           });
+          this.props.history.push('/');
     }
 
     render() {
