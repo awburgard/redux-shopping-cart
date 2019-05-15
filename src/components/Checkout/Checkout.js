@@ -6,6 +6,9 @@ class Checkout extends Component {
 
     handleCheckout = () => {
         // TODO: Clear the cart and navigate to the product page
+        this.props.dispatch({
+            type: 'CLEAR_CART'
+          });
     }
 
     render() {
