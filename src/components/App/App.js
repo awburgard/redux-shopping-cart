@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // Shorthand import, {} in import is called destructuring
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import 'bulma/css/bulma.css'
 
 // Components
 import Products from '../Products/Products.js';
@@ -10,11 +11,11 @@ import Checkout from '../Checkout/Checkout.js';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <h1>Redux Shopping Cart</h1>
 
         <Router>
-          <div>
+          <div className="hero">
             <ul className="nav">
               <li>
                 <Link to="/">Product</Link>
