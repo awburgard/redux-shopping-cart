@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Redux Shopping Cart</h1>
-        
+
         <Router>
           <div>
             <ul className="nav">
@@ -24,7 +24,7 @@ class App extends Component {
               </li>
             </ul>
             <Route exact path="/" component={Products} />
-            <Route exact path="/checkout" component={Checkout} />            
+            <Route exact path="/checkout" component={Checkout} />
           </div>
         </Router>
       </div>
