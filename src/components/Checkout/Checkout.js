@@ -10,15 +10,12 @@ class Checkout extends Component {
         // TODO: Clear the cart and navigate to the product page
         this.props.dispatch({
             type: 'CLEAR_CART'
-          });
-          this.props.history.push('/');
+        });
+        this.props.history.push('/');
     }
 
     removeItem = (event) => {
-        this.props.dispatch({
-            type: 'REMOVE_CHECKOUT',
-            payload: event.target.dataset.id,
-        })
+        const dataId = event.target.dataset.id
         swal({
             Title: 'Are you sure?',
             text: 'This will delete your item',
@@ -26,27 +23,31 @@ class Checkout extends Component {
             buttons: true,
             dangerMode: true,
         })
-        .then((willDelete)=>{
-            if(willDelete){
-                swal('Poof! Your item has been remove!',{
-                    icon: 'success',
-                });
-            } else {
-                swal('Your item is safe!')
-            }
-        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.props.dispatch({
+                        type: 'REMOVE_CHECKOUT',
+                        payload: dataId,
+                    })
+                    swal('Poof! Your item has been remove!', {
+                        icon: 'success',
+                    });
+                } else {
+                    swal('Your item is safe!')
+                }
+            })
     }
 
     render() {
         let total = 0;
         const checkoutList = this.props.reduxState.checkoutReducer.map((item, index) => {
-            total+=item.price;
+            total += parseFloat(item.price);
             return (
-                <ul key={index}>
-                    <li>{item.name} : {item.price} <button data-id={index} onClick={this.removeItem}>Delete</button></li>
-                </ul>
+                <div key={index}>
+                    <p>{item.name} : {item.price} <button data-id={index} onClick={this.removeItem}>Delete</button></p>
+                </div>
             )
-        })
+        });
 
         total = total.toFixed(2);
 
@@ -55,7 +56,7 @@ class Checkout extends Component {
                 <h2>Checkout</h2>
                 {/* TODO: Display items in the cart */}
                 {checkoutList}
-                Total Price: <TotalPrice total={total}/>
+                Total Price: <TotalPrice total={total} />
                 <button onClick={this.handleCheckout}>Checkout</button>
             </div>
         )

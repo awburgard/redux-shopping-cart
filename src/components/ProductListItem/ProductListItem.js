@@ -15,10 +15,7 @@ class ProductListItem extends Component {
     }
 
     removeItem = (event) => {
-        this.props.dispatch({
-            type: 'REMOVE_PRODUCT',
-            payload: event.target.dataset.id
-        })
+       const dataId = event.target.dataset.id
         swal({
             Title: 'Are you sure?',
             text: 'This will delete your item',
@@ -28,6 +25,10 @@ class ProductListItem extends Component {
         })
         .then((willDelete)=>{
             if(willDelete){
+                this.props.dispatch({
+                    type: 'REMOVE_PRODUCT',
+                    payload: dataId,
+                })
                 swal('Poof! Your item has been remove!',{
                     icon: 'success',
                 });
