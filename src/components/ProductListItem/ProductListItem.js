@@ -13,11 +13,19 @@ class ProductListItem extends Component {
         })
     }
 
+    removeItem = (event) => {
+        this.props.dispatch({
+            type: 'REMOVE_PRODUCT',
+            payload: event.target.dataset.id
+        })
+    }
+
     render() {
         return (
-            <li>
+            <div>
                 {this.props.product.name}: {this.props.product.price} <button onClick={this.addProductToCart}>Add to Cart</button>
-            </li>
+                <button data-id={this.props.id} onClick={this.removeItem}>Remove</button>
+            </div>
         )
     }
 }

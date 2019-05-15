@@ -15,7 +15,7 @@ class Checkout extends Component {
 
     removeItem = (event) => {
         this.props.dispatch({
-            type: 'REMOVE',
+            type: 'REMOVE_CHECKOUT',
             payload: event.target.dataset.id,
         })
     }

@@ -19,6 +19,11 @@ const products = [
 const productReducer = (state = products, action) => {
     if (action.type === 'ADD_NEW_PRODUCT') {
         return [...state, action.payload];
+    } else if (action.type === 'REMOVE_PRODUCT'){
+        const newState = state.filter((element, index)=>{
+            return index !== parseInt(action.payload);
+        });
+        return newState
     }
     return state;
 };
@@ -30,7 +35,7 @@ const checkoutReducer = (state = [], action) => {
         return [...state, action.payload]
     } else if (action.type === 'CLEAR_CART'){
         return [];
-    } else if (action.type === 'REMOVE'){
+    } else if (action.type === 'REMOVE_CHECKOUT'){
         const newState = state.filter((element, index)=>{
             return index !== parseInt(action.payload);
         });
