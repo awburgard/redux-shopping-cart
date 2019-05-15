@@ -9,9 +9,9 @@ class ProductListItem extends Component {
         // TODO: Dispatch here
         this.props.dispatch({
             type: 'SUBMIT_CART',
-            payload : this.props.product
-    })
-}
+            payload: this.props.product
+        })
+    }
 
     render() {
         return (
