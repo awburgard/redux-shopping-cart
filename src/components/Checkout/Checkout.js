@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
 import { connect } from 'react-redux'
 import TotalPrice from '../TotalPrice/TotalPrice'
+import swal from 'sweetalert';
 
 class Checkout extends Component {
 
@@ -17,6 +18,22 @@ class Checkout extends Component {
         this.props.dispatch({
             type: 'REMOVE_CHECKOUT',
             payload: event.target.dataset.id,
+        })
+        swal({
+            Title: 'Are you sure?',
+            text: 'This will delete your item',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete)=>{
+            if(willDelete){
+                swal('Poof! Your item has been remove!',{
+                    icon: 'success',
+                });
+            } else {
+                swal('Your item is safe!')
+            }
         })
     }
 
