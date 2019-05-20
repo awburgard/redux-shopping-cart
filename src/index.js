@@ -18,6 +18,7 @@ const products = [
 // Array of products, this reducer is complete
 const productReducer = (state = products, action) => {
     if (action.type === 'ADD_NEW_PRODUCT') {
+        console.log(action.payload)
         return [...state, action.payload];
     } else if (action.type === 'REMOVE_PRODUCT'){
         const newState = state.filter((element, index)=>{

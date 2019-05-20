@@ -3,6 +3,13 @@ import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
 import { connect } from 'react-redux'
 import TotalPrice from '../TotalPrice/TotalPrice'
 import swal from 'sweetalert';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
+
 
 class Checkout extends Component {
 
@@ -44,7 +51,7 @@ class Checkout extends Component {
             total += parseFloat(item.price);
             return (
                 <div key={index}>
-                    <p>{item.name} : {item.price} <button data-id={index} onClick={this.removeItem}>Delete</button></p>
+                    <p>{item.name} : {item.price} <IconButton data-id={index} onClick={this.removeItem}><DeleteIcon/></IconButton></p>
                 </div>
             )
         });
@@ -57,7 +64,7 @@ class Checkout extends Component {
                 {/* TODO: Display items in the cart */}
                 {checkoutList}
                 Total Price: <TotalPrice total={total} />
-                <button onClick={this.handleCheckout}>Checkout</button>
+                <IconButton onClick={this.handleCheckout}><AddShoppingCartIcon/></IconButton>
             </div>
         )
     }

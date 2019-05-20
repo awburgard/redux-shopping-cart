@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
 import { connect } from 'react-redux'
 import swal from 'sweetalert';
+import Button from '@material-ui/core/Button';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete'
+
 
 class ProductListItem extends Component {
+
 
     addProductToCart = () => {
         console.log(this.props.product);
@@ -15,7 +22,7 @@ class ProductListItem extends Component {
     }
 
     removeItem = (event) => {
-       const dataId = event.target.dataset.id
+        const dataId = event.target.dataset.id
         swal({
             Title: 'Are you sure?',
             text: 'This will delete your item',
@@ -23,26 +30,26 @@ class ProductListItem extends Component {
             buttons: ["Oh noez!", "Aww yiss!"],
             dangerMode: true,
         })
-        .then((willDelete)=>{
-            if(willDelete){
-                this.props.dispatch({
-                    type: 'REMOVE_PRODUCT',
-                    payload: dataId,
-                })
-                swal('Poof! Your item has been remove!',{
-                    icon: 'success',
-                });
-            } else {
-                swal('Your item is safe!')
-            }
-        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.props.dispatch({
+                        type: 'REMOVE_PRODUCT',
+                        payload: dataId,
+                    })
+                    swal('Poof! Your item has been remove!', {
+                        icon: 'success',
+                    });
+                } else {
+                    swal('Your item is safe!')
+                }
+            })
     }
 
     render() {
         return (
             <div>
-                {this.props.product.name}: {this.props.product.price} <button onClick={this.addProductToCart}>Add to Cart</button>
-                <button data-id={this.props.id} onClick={this.removeItem}>Remove</button>
+                {this.props.product.name}: {this.props.product.price} <IconButton onClick={this.addProductToCart}><AddShoppingCartIcon/></IconButton>
+                <IconButton data-id={this.props.id} onClick={this.removeItem}><DeleteIcon/></IconButton>
             </div>
         )
     }
