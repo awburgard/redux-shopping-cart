@@ -3,6 +3,7 @@ import ProductForm from '../ProductForm/ProductForm';
 import ProductList from '../ProductList/ProductList';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
 import { connect } from 'react-redux'
+import Typography from '@material-ui/core/Typography';
 
 class Products extends Component {
     // TODO: Use the productReducer instead of state
@@ -20,7 +21,7 @@ class Products extends Component {
     render() {
         return (
             <div>
-                <h2>Products</h2>
+                <Typography variant="h5" gutterBottom>Products</Typography>
                 <ProductForm addNewProduct={this.addNewProduct} />
                 <ProductList products={this.props.reduxState.productReducer} />
             </div>

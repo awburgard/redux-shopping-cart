@@ -7,33 +7,30 @@ import 'bulma/css/bulma.css'
 // Components
 import Products from '../Products/Products.js';
 import Checkout from '../Checkout/Checkout.js';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import Typography from '@material-ui/core/Typography';
 
 
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider>
-        <div className="container">
-          <h1>Redux Shopping Cart</h1>
+      <div className="container">
+        <Typography component="h1" variant="h1" gutterBottom> Redux Shopping Cart</Typography>
 
-          <Router>
-            <div className="hero">
-              <ul className="nav">
-                <li>
-                  <Link to="/">Product</Link>
-                </li>
-                <li>
-                  <Link to="/checkout">Checkout</Link>
-                </li>
-              </ul>
-              <Route exact path="/" component={Products} />
-              <Route exact path="/checkout" component={Checkout} />
-            </div>
-          </Router>
-        </div>
-      </MuiThemeProvider>
-
+        <Router>
+          <div className="hero">
+            <ul className="nav">
+              <li>
+                <Link to="/">Product</Link>
+              </li>
+              <li>
+                <Link to="/checkout">Checkout</Link>
+              </li>
+            </ul>
+            <Route exact path="/" component={Products} />
+            <Route exact path="/checkout" component={Checkout} />
+          </div>
+        </Router>
+      </div>
     );
   }
 }

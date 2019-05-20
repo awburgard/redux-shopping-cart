@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import Typography from '@material-ui/core/Typography';
 
 class TotalPrice extends Component {
     render(){
         return(
             <div key={this.props.index}>
-                <p>{this.props.total}</p>
+                <Typography variant="h6" gutterBottom>{this.props.total}</Typography>
             </div>
         )
     }
